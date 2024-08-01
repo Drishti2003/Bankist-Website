@@ -73,3 +73,51 @@ document
   .addEventListener("click", function () {
     msg.remove();
   });
+
+// styles
+msg.style.backgroundColor = "#37383d";
+msg.style.width = "120%";
+
+console.log(msg.style.height); //only works for inline
+console.log(msg.style.backgroundColor);
+
+console.log(getComputedStyle(msg));
+console.log(getComputedStyle(msg).height);
+
+msg.style.height =
+  Number.parseFloat(getComputedStyle(msg).height, 10) + 30 + "px";
+
+document.documentElement.style.setProperty("--color-primary", "orangered");
+
+// Attributes
+const logo = document.querySelector(".nav__logo");
+console.log(logo.alt);
+console.log(logo.className);
+
+// non-standard
+console.log(logo.designer);
+console.log(logo.getAttribute("designer"));
+logo.setAttribute("company", "Bankist");
+
+console.log(logo.src);
+console.log(logo.getAttribute("src"));
+
+const link = document.querySelector(".github-link");
+console.log(link.href);
+console.log(link.getAttribute("href"));
+
+const link1 = document.querySelector(".nav__link--btn");
+console.log(link1.href);
+console.log(link1.getAttribute("href"));
+
+// data attributes
+console.log(logo.dataset.versionNumber);
+
+// classes
+logo.classList.add("c", "d");
+logo.classList.remove("c", "d");
+logo.classList.toggle("c");
+logo.classList.contains("c");
+
+// don't use bcoz overwrite
+logo.className = "drishti";
