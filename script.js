@@ -36,11 +36,12 @@ document.addEventListener("keydown", function (e) {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// selecting elements
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
-document.querySelector(".header");
+const header = document.querySelector(".header");
 const allSections = document.querySelectorAll(".section");
 console.log(allSections);
 
@@ -48,4 +49,27 @@ document.getElementById("section--1");
 const allButtons = document.getElementsByTagName("button");
 console.log(allButtons);
 
-console.log(document.getElementsByClassName('btn'))
+console.log(document.getElementsByClassName("btn"));
+
+// creating and inserting elements
+// .insertAdjacentHTML
+
+const msg = document.createElement("div");
+msg.classList.add("cookie-message");
+// msg.textContent = "We use cookies for improved functionality and analytics.";
+msg.innerHTML =
+  'We use cookies for improved functionality and analytics.<button class="btn btn--close-cookie">Got it!</button>';
+
+// header.prepend(msg);
+header.append(msg);
+// header.append(msg.cloneNode(true));
+
+// header.before(msg);
+// header.after(msg);
+
+// delete elements
+document
+  .querySelector(".btn--close-cookie")
+  .addEventListener("click", function () {
+    msg.remove();
+  });
