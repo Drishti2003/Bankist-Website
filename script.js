@@ -1,12 +1,14 @@
 "use strict";
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function (e) {
   e.preventDefault();
@@ -33,8 +35,8 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
+///////////////////////////////////////
+// button scrolling
 
 btnScrollTo.addEventListener("click", function (e) {
   const s1coords = section1.getBoundingClientRect();
@@ -63,6 +65,27 @@ btnScrollTo.addEventListener("click", function (e) {
   // });
 
   section1.scrollIntoView({ behavior: "smooth" });
+});
+
+///////////////////////////////////////
+// page navigation
+
+// document.querySelectorAll(".nav__link").forEach(function (e) {
+//   e.addEventListener("click", function (el) {
+//     el.preventDefault();
+
+//     const id = this.getAttribute("href");
+//     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+//   });
+// });
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,7 +203,7 @@ setTimeout(()=>h1.removeEventListener('mouseenter',alertH1),3000)
 */
 
 /////////////////////////////////////// Event Propagation in Practice ///////////////////////////////////////
-
+/*
 const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const randomColor = () =>
   `rgb(${randInt(0, 255)},${randInt(0, 255)},${randInt(0, 255)})`;
@@ -203,3 +226,4 @@ document.querySelector(".nav").addEventListener("click", function (e) {
   this.style.backgroundColor = randomColor();
   console.log("NAV", e.target, e.currentTarget);
 });
+*/
